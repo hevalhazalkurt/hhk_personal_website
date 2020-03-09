@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {% if title %}
+      <title>Heval Hazal Kurt - {{ title }}</title>
+  {% else %}
+      <title>Heval Hazal Kurt - Filmmaker & Developer</title>
+  {% endif %}
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.3/dist/css/uikit.min.css" />
+</head>
+
+<body>
+
+  <header class="">
+    <nav class="uk-navbar-container" uk-navbar>
+      <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav">
+          <li><a href="#" uk-icon="icon: home"></a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Projects</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="uk-navbar-right">
+
+        <ul class="uk-navbar-nav">
+          <li><a href="https://www.linkedin.com/in/hevalhazalkurt/" target="_blank" uk-icon="icon: linkedin"></a></li>
+          <li><a href="https://github.com/hevalhazalkurt" target="_blank" uk-icon="icon: github"></a></li>
+          <li><a href="https://www.instagram.com/hevalhazalkurt/" target="_blank" uk-icon="icon: instagram"></a></li>
+          <li><a href="https://twitter.com/hevalandsteven" target="_blank" uk-icon="icon: twitter"></a></li>
+          <li><a href="https://www.facebook.com/hevalvehazal" target="_blank" uk-icon="icon: facebook"></a></li>
+          <li><a href="https://www.youtube.com/user/kisaiyidir" target="_blank" uk-icon="icon: youtube"></a></li>
+          <li><a href="https://www.codewars.com/users/hevalhazalkurt" target="_blank" uk-icon="icon: code"></a></li>
+        </ul>
+
+      </div>
+
+    </nav>
+  </header>
+
+  <div class="uk-container">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.3/dist/js/uikit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.3/dist/js/uikit-icons.min.js"></script>
+</body>
+
+</html>
