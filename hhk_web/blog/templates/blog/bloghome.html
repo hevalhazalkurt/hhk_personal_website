@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+<div class="uk-child-width-expand@s uk-text-center" uk-grid>
+    {% for post in blog_posts %}
+        <div class="uk-card uk-card-default uk-card-body">
+            <h1 class="uk-text-bold uk-heading-divider uk-text-center">{{ post.title }}</h1>
+            <p class="uk-text-muted">by {{ post.author }} in {{ post.category }}</p>
+            <p>{{ post.content }}</p>
+            <p class="uk-text-muted">{{ post.date_posted }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}
