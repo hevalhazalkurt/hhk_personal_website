@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import ProjectPost
 
 
 dummy_projects = [
@@ -30,5 +31,6 @@ dummy_projects = [
 
 
 def projecthome(request):
-    context = {"project_posts": dummy_projects}
+    #context = {"project_posts": dummy_projects}
+    context = {"project_posts": ProjectPost.objects.all()}
     return render(request, "project/projecthome.html", context)

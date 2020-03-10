@@ -7,8 +7,8 @@
         <div class="uk-card uk-card-default uk-card-body">
             <h1 class="uk-text-bold uk-heading-divider uk-text-center">{{ post.title }}</h1>
             <p class="uk-text-muted">by {{ post.author }} in {{ post.category }}</p>
-            <p>{{ post.content }}</p>
-            <p class="uk-text-muted">{{ post.date_posted }}</p>
+            <p>{{ post.summary }}</p>
+            <p class="uk-text-muted">{{ post.date_posted|date:"F d, Y" }}</p>
         </div>
     {% endfor %}
 </div>
