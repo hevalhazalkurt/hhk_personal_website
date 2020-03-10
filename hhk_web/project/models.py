@@ -1,3 +1,14 @@
 from django.db import models
+from django.utils import timezone
 
-# Create your models here.
+class ProjectPost(models.Model):
+    title = models.CharField(max_length=100)
+    client = models.CharField(max_length=100)
+    position = models.CharField(max_length=200)
+    link = models.URLField(max_length=250)
+    date_posted = models.DateTimeField(default=timezone.now)
+    summary = models.CharField(max_length=250)
+
+
+    def __str__(self):
+        return self.title
