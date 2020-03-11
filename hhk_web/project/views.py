@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic import ListView, DetailView
 from .models import ProjectPost
 
 
@@ -34,3 +35,17 @@ def projecthome(request):
     #context = {"project_posts": dummy_projects}
     context = {"project_posts": ProjectPost.objects.all()}
     return render(request, "project/projecthome.html", context)
+
+
+class ProjectPostListView(ListView):
+    model = ProjectPost
+    template_name = "project/projecthome.html"
+    context_object_name = "project_posts"
+    ordering = ["-date_posted"]
+    paginate_by = 10
+
+
+
+class ProjectDetailView(DetailView):
+    model = ProjectPost
+    template_name = "project/project_detail.html"
