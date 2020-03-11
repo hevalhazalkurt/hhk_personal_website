@@ -6,7 +6,9 @@
 <div class="uk-child-width-expand@s uk-text-center" uk-grid>
     {% for project in project_posts %}
         <div class="uk-card uk-card-default uk-card-body">
-            <h1 class="uk-text-bold uk-heading-divider uk-text-center">{{ project.title }}</h1>
+            <h1 class="uk-text-bold uk-text-center"><a href="{% url "project-detail" project.id %}">{{ project.title }}</a></h1>
+            <a href="{% url "project-detail" project.id %}"><img src="{{ project.image.url }}" /></a>
+            <p class="uk-text-bold uk-heading-divider">{{ project.category }}</p>
             <p class="uk-text-muted">as {{ project.position }} for {{ project.client }}</p>
             <p>{{ project.summary }}</p>
         </div>

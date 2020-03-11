@@ -1,0 +1,15 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+    <div class="uk-card uk-card-default uk-card-body">
+        <img src="{{ object.image.url }}" />
+        <h1 class="uk-text-bold uk-text-center">{{ object.title }}</h1>
+        <p class="uk-text-bold uk-text-center">{{ object.category }}</p>
+        <p class="uk-text-muted uk-text-center">as {{ object.position }} for {{ object.client }}</p> <hr>
+        <p>{{ object.summary }}</p>
+        <p>{{ object.content }}</p>
+        <a href="{{object.link}}" target="_blank">{{ object.link }}</a>
+    </div>
+
+{% endblock content %}
