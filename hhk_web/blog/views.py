@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic import ListView, DetailView
 from .models import BlogPost
 
 dummy_posts = [
@@ -42,3 +43,19 @@ def contact(request):
 
 def home(request):
     return render(request, "blog/home.html")
+
+
+
+
+class BlogPostListView(ListView):
+    model = BlogPost
+    template_name = "blog/bloghome.html"
+    context_object_name = "blog_posts"
+    ordering = ["-date_posted"]
+    paginate_by = 10
+
+
+
+class BlogDetailView(DetailView):
+    model = BlogPost
+    template_name = "blog/blog_detail.html"
