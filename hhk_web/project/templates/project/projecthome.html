@@ -8,8 +8,8 @@
         <div class="uk-card uk-card-default uk-card-body">
             <h1 class="uk-text-bold uk-text-center"><a href="{% url "project-detail" project.id %}">{{ project.title }}</a></h1>
             <a href="{% url "project-detail" project.id %}"><img src="{{ project.image.url }}" /></a>
-            <p class="uk-text-bold uk-heading-divider">{{ project.category }}</p>
-            <p class="uk-text-muted">as {{ project.position }} for {{ project.client }}</p>
+            <!-- <p class="uk-text-bold uk-heading-divider">as {{ project.position }} for {{ project.client }} in {{ project.category }}</p> -->
+            <p class="uk-text-muted uk-heading-divider">as <b>{{ project.position }}</b> for <b>{{ project.client }}</b> in <b>{{ project.category }}</b></p>
             <p>{{ project.summary }}</p>
         </div>
     {% endfor %}
