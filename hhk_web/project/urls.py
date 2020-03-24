@@ -5,5 +5,5 @@ from . import views
 
 urlpatterns = [
     path("", ProjectPostListView.as_view(), name="project-home"),
-    path("<int:pk>/", ProjectDetailView.as_view(), name="project-detail"),
+    path("<slug>/", ProjectDetailView.as_view(), name="project-detail"),
 ]
