@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.urls import reverse
 
 
 class ProjectCategory(models.Model):
@@ -27,7 +28,11 @@ class ProjectPost(models.Model):
     summary = models.CharField(max_length=250)
     content = models.TextField()
     category = models.ForeignKey(ProjectCategory, on_delete=models.CASCADE)
+    slug = models.SlugField(max_length=250, blank = True, default=None)
 
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('project-detail', args=[self.slug])
