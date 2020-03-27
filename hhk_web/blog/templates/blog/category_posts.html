@@ -1,0 +1,20 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+<div class="uk-child-width-expand@s uk-text-center" uk-grid>
+    <h1 class="mb-3">Posts in {{ category.title }}<!--{{ view.kwargs.username }} ({{ page_obj.paginator.count }})--></h1>
+    {% for post in category_posts %}
+        <div class="uk-card uk-card-default uk-card-body">
+            <!--<h1 class="uk-text-bold uk-heading-divider uk-text-center"><a href="{% url "blog-detail" post.id %}">{{ post.title }}</a></h1>-->
+            <h1 class="uk-text-bold uk-heading-divider uk-text-center"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
+            <a href="{{ post.get_absolute_url }}"><img src="{{ post.image.url }}" /></a>
+            <p class="uk-text-muted">by {{ post.author }} in {{ post.category }}</p>
+            <p>{{ post.summary }}</p>
+            <p class="uk-text-muted">{{ post.date_posted|date:"F d, Y" }}</p>
+        </div>
+    {% endfor %}
+
+</div>
+
+{% endblock content %}
