@@ -9,7 +9,7 @@
             <h1 class="uk-text-bold uk-text-center"><a href="{{ project.get_absolute_url }}">{{ project.title }}</a></h1>
             <a href="{{ project.get_absolute_url }}"><img src="{{ project.image.url }}" /></a>
             <!-- <p class="uk-text-bold uk-heading-divider">as {{ project.position }} for {{ project.client }} in {{ project.category }}</p> -->
-            <p class="uk-text-muted uk-heading-divider">as <b>{{ project.position }}</b> for <b>{{ project.client }}</b> in <b>{{ project.category }}</b></p>
+            <p class="uk-text-muted uk-heading-divider">as <b>{{ project.position }}</b> for <b>{{ project.client }}</b> in <a href="{{ project.category.get_absolute_url }}"><b>{{ project.category }}</b></a></p>
             <p>{{ project.summary }}</p>
         </div>
     {% endfor %}
