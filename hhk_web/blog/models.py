@@ -18,6 +18,10 @@ class BlogCategory(models.Model):
         return self.title
 
 
+    def get_absolute_url(self):
+        return reverse('blog-category', args=[self.slug])
+
+
 class BlogPost(models.Model):
     image = models.ImageField(upload_to="images/")
     title = models.CharField(max_length=100)
