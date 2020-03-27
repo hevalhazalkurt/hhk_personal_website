@@ -17,6 +17,9 @@ class ProjectCategory(models.Model):
         return self.title
 
 
+    def get_absolute_url(self):
+        return reverse('project-category', args=[self.slug])
+
 
 class ProjectPost(models.Model):
     image = models.ImageField(upload_to="images/")
