@@ -2,6 +2,15 @@
 
 {% block content %}
 
-<h1 class="uk-text-bold uk-heading-divider uk-text-center">Contact</h1>
+<div class="uk-container">
+  <h1 class="uk-text-bold uk-heading-divider uk-text-center">Contact me!</h1>
+
+  <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit">Send Email</button>
+  </form>
+
+</div>
 
 {% endblock content %}
