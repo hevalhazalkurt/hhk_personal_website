@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
+from django.utils.text import slugify
 from django.urls import reverse
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class ProjectCategory(models.Model):
@@ -21,6 +23,11 @@ class ProjectCategory(models.Model):
         return reverse('project-category', args=[self.slug])
 
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+
 class ProjectPost(models.Model):
     image = models.ImageField(upload_to="images/")
     title = models.CharField(max_length=100)
@@ -29,7 +36,7 @@ class ProjectPost(models.Model):
     link = models.URLField(max_length=250)
     date_posted = models.DateTimeField(default=timezone.now)
     summary = models.CharField(max_length=250)
-    content = models.TextField()
+    content = RichTextUploadingField()
     category = models.ForeignKey(ProjectCategory, on_delete=models.CASCADE)
     slug = models.SlugField(max_length=250, blank = True, default=None)
 
@@ -39,3 +46,7 @@ class ProjectPost(models.Model):
 
     def get_absolute_url(self):
         return reverse('project-detail', args=[self.slug])
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
