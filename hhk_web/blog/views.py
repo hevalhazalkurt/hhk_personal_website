@@ -1,9 +1,12 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 from .models import BlogPost, BlogCategory
+from project.models import ProjectPost, ProjectCategory
 from .forms import ContactForm
 from django.core.mail import send_mail
 from django.http import HttpResponse
+
+
 
 
 
@@ -26,9 +29,17 @@ def contact(request):
     #return render(request, "blog/contact.html", {"title": "Contact"})
 
 
-def home(request):
-    return render(request, "blog/home.html")
 
+class HomePageView(TemplateView):
+    template_name = "blog/home.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['latest_posts'] = BlogPost.objects.all()[::-1][:9]
+        context['latest_projects'] = ProjectPost.objects.all()[::-1][:9]
+        context['post_categories'] = BlogCategory.objects.all()
+        context['project_categories'] = ProjectCategory.objects.all()
+        return context
 
 
 
@@ -37,7 +48,6 @@ class BlogPostListView(ListView):
     template_name = "blog/bloghome.html"
     context_object_name = "blog_posts"
     ordering = ["-date_posted"]
-
 
 
 
