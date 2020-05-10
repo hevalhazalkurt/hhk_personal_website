@@ -35,26 +35,26 @@ class HomePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['latest_posts'] = BlogPost.objects.all()[::-1][:9]
-        context['latest_projects'] = ProjectPost.objects.all()[::-1][:9]
+        context['latest_posts'] = BlogPost.objects.all()[::-1][:3]
+        context['latest_projects'] = ProjectPost.objects.all()[::-1][:4]
         context['post_categories'] = BlogCategory.objects.all()
         context['project_categories'] = ProjectCategory.objects.all()
         return context
 
 
-
-class BlogPostListView(ListView):
-    model = BlogPost
+class BlogPostListView(TemplateView):
     template_name = "blog/bloghome.html"
-    context_object_name = "blog_posts"
-    ordering = ["-date_posted"]
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['posts'] = BlogPost.objects.all()[::-1]
+        context['post_categories'] = BlogCategory.objects.all()
+        return context
 
 
 class BlogDetailView(DetailView):
     model = BlogPost
     template_name = "blog/blog_detail.html"
-
 
 
 class BlogCategoryListView(ListView):
