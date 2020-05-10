@@ -6,8 +6,9 @@
         <img src="{{ object.image.url }}" />
         <h1 class="uk-text-bold uk-text-center">{{ object.title }}</h1>
         <p class="uk-text-muted uk-text-center">by {{ object.author }} in <a href="{{ object.category.get_absolute_url }}">{{ object.category }}</a> on {{ object.date_posted|date:"F d, Y" }}</p> <hr>
-        <p>{{ object.summary }}</p> <hr>
-        <p>{{ object.content }}</p>
+        <p>{{ object.summary|safe }}</p> <hr>
+        <p>{{ object.content|safe }}</p>
+
     </div>
 
 {% endblock content %}
