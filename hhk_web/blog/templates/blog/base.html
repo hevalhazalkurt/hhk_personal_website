@@ -31,7 +31,6 @@
           <li><a href="{% url "home" %}">Home</a></li>
           <li><a href="{% url "blog-home" %}">Blog</a></li>
           <li><a href="{% url "project-home" %}">Projects</a></li>
-          <li><a href="{% url "contact" %}">Contact</a></li>
         </ul>
       </div>
 
@@ -51,14 +50,14 @@
 
     </nav>
   </header>
-
+<div class="uk-padding">
   <div class="uk-container">
     {% block content %}
     {% endblock %}
 
     <p class="uk-text-center">© Heval Hazal Kurt {% now "Y" %}</p>
   </div>
-
+</div>
   <script>
   UIkit.filter();
   </script>
