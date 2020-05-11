@@ -2,8 +2,8 @@
 <html>
 
 <head>
-  {% if title %}
-      <title>Heval Hazal Kurt - {{ title }}</title>
+  {% if object.title %}
+      <title>Heval Hazal Kurt - {{ object.title }}</title>
   {% else %}
       <title>Heval Hazal Kurt - Filmmaker & Developer</title>
   {% endif %}
@@ -25,7 +25,7 @@
 <body>
 
   <header class="">
-    <nav class="uk-navbar-container" uk-navbar>
+    <nav class="uk-navbar-container uk-flex-wrap " uk-navbar >
       <div class="uk-navbar-left">
         <ul class="uk-navbar-nav">
           <li><a href="{% url "home" %}">Home</a></li>
@@ -35,7 +35,6 @@
       </div>
 
       <div class="uk-navbar-right">
-
         <ul class="uk-navbar-nav">
           <li><a href="https://www.linkedin.com/in/hevalhazalkurt/" target="_blank" uk-icon="icon: linkedin"></a></li>
           <li><a href="https://github.com/hevalhazalkurt" target="_blank" uk-icon="icon: github"></a></li>
@@ -45,7 +44,6 @@
           <li><a href="https://www.youtube.com/user/kisaiyidir" target="_blank" uk-icon="icon: youtube"></a></li>
           <li><a href="https://www.codewars.com/users/hevalhazalkurt" target="_blank" uk-icon="icon: code"></a></li>
         </ul>
-
       </div>
 
     </nav>
