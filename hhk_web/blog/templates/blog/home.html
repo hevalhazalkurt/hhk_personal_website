@@ -6,15 +6,21 @@
 <h1 class="uk-text-bold uk-heading-divider uk-text-center ">Who's that girl?</h1>
 
 <!-- Gray section -->
-<div class="uk-tile uk-tile-muted">
-  <p class="uk-text-small uk-text-left">🏷 known as fictionhead. blue. filmmaker. developer. entrepreneur.<br>
-    🛩 interests in aviation. psychology. art. music.<br>
-    💙 loves being multidisciplinary. problem-solving. challenging to herself. <br>
-    📚 received a scholarship from Goldman Sachs 10.000 Women Entrepreneur. Endeavor Create Up. Anadolu Foundation The Women of Value Developing Istanbul.<br>
-    👣 walks and explores her own road. own ways. not others.<br>
-    🎯 worked for Al Jazeera, Coca Cola, Greenpeace, Gittigidiyor eBay, Garanti Emeklilik, Finansbank, Ağaoğlu, Cumhuriyet, Kala Film, Sziget Festival, Koruncuk, KAÇUV, BKM, NTV, JLT, TRT, and more.<br>
-    📌 founded, worked, led, and made creative projects in Parazit Film & Digital Workz. Kısa İyidir (aka Short is Good).</p>
+<div class="uk-child-width-1-2@s uk-grid-collapse uk-text-center " uk-grid>
+  <img class="uk-width-auto uk-height-medium uk-align-center uk-border-circle" src="media/hevalhazalkurt.jpg" alt="Heval Hazal Kurt">
+
+  <div class="uk-tile uk-tile-muted uk-width-expand@m">
+      <p class="uk-text-small uk-text-left">
+      🏷 known as fictionhead. blue. filmmaker. developer. entrepreneur.<br>
+      🛩 interests in aviation. psychology. art. music.<br>
+      💙 loves being multidisciplinary. problem-solving. challenging to herself. <br>
+      📚 received a scholarship from Goldman Sachs 10.000 Women Entrepreneur. Endeavor Create Up. Anadolu Foundation The Women of Value Developing Istanbul.<br>
+      👣 walks and explores her own road. own ways. not others.<br>
+      🎯 worked for Al Jazeera, Coca Cola, Greenpeace, Gittigidiyor eBay, Garanti Emeklilik, Finansbank, Ağaoğlu, Cumhuriyet, Kala Film, Sziget Festival, Koruncuk, KAÇUV, BKM, NTV, JLT, TRT, and more.<br>
+      📌 founded, worked, led, and made creative projects in Parazit Film & Digital Workz. Kısa İyidir (aka Short is Good).</p>
+  </div>
 </div>
+
 
 <!-- Blue section -->
 <div class="uk-child-width-1-2@s uk-grid-collapse uk-text-center" uk-grid>
@@ -46,7 +52,7 @@
 <!-- Blog category section -->
 <div uk-grid>
   {% for cat in post_categories %}
-  <p class="uk-text-muted"><a href="{{ cat.get_absolute_url }}">{{ cat.title }}</a></p>
+  <p class="uk-link-muted uk-text-muted uk-text-uppercase uk-text-small uk-text-bold"><a href="{{ cat.get_absolute_url }}">{{ cat.title }}</a></p>
 
   {% endfor %}
 </div>
@@ -59,7 +65,7 @@
     <div class="uk-section uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-background-blend-overlay uk-background-secondary" style="background-image: url({{ post.image.url }})">
 
       <div class="uk-card-body">
-        <h1 class="uk-card-title uk-text-bold uk-heading-divider uk-text-center"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
+        <h1 class="uk-link-heading uk-card-title uk-text-bold uk-heading-divider uk-text-center"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
         <p>{{ post.summary }}</p>
       </div>
 
@@ -78,7 +84,7 @@
 <!-- Project category section -->
 <div uk-grid>
   {% for cat in project_categories %}
-  <p class="uk-text-muted"><a href="{{ cat.get_absolute_url }}">{{ cat.title }}</a></p>
+  <p class="uk-link-muted uk-text-muted uk-text-uppercase uk-text-small uk-text-bold"><a href="{{ cat.get_absolute_url }}">{{ cat.title }}</a></p>
   {% endfor %}
 </div>
 
@@ -89,7 +95,7 @@
     <div class="uk-section uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" style="background-image: url({{ project.image.url }})">
     </div>
     <div class="uk-padding-small uk-background-muted">
-      <h1 class="uk-card-title uk-text-bold uk-heading-divider uk-text-center"><a href="{{ project.get_absolute_url }}">{{ project.title }}</a></h1>
+      <h1 class="uk-link-heading uk-card-title uk-text-bold uk-heading-divider uk-text-center"><a href="{{ project.get_absolute_url }}">{{ project.title }}</a></h1>
       <p>{{ project.summary }}</p>
     </div>
   </div>
