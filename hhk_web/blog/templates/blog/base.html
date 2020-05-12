@@ -4,6 +4,8 @@
 <head>
   {% if object.title %}
       <title>Heval Hazal Kurt - {{ object.title }}</title>
+  {% elif view.kwargs.slug %}
+      <title>Heval Hazal Kurt - {{ view.kwargs.slug|title }}</title>
   {% else %}
       <title>Heval Hazal Kurt - Filmmaker & Developer</title>
   {% endif %}
@@ -18,23 +20,21 @@
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
-
-
 </head>
 
 <body>
 
   <header class="">
-    <nav class="uk-navbar-container uk-flex-wrap " uk-navbar >
-      <div class="uk-navbar-left">
+    <nav class="uk-navbar-container uk-flex-center uk-flex-between@s uk-flex-wrap uk-flex-wrap-between " uk-navbar>
+
         <ul class="uk-navbar-nav">
           <li><a href="{% url "home" %}">Home</a></li>
           <li><a href="{% url "blog-home" %}">Blog</a></li>
           <li><a href="{% url "project-home" %}">Projects</a></li>
         </ul>
-      </div>
 
-      <div class="uk-navbar-right">
+
+
         <ul class="uk-navbar-nav">
           <li><a href="https://www.linkedin.com/in/hevalhazalkurt/" target="_blank" uk-icon="icon: linkedin"></a></li>
           <li><a href="https://github.com/hevalhazalkurt" target="_blank" uk-icon="icon: github"></a></li>
@@ -44,7 +44,7 @@
           <li><a href="https://www.youtube.com/user/kisaiyidir" target="_blank" uk-icon="icon: youtube"></a></li>
           <li><a href="https://www.codewars.com/users/hevalhazalkurt" target="_blank" uk-icon="icon: code"></a></li>
         </ul>
-      </div>
+
 
     </nav>
   </header>
