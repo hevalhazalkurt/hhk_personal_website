@@ -42,14 +42,13 @@ class HomePageView(TemplateView):
         return context
 
 
-class BlogPostListView(TemplateView):
-    template_name = "blog/bloghome.html"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['posts'] = BlogPost.objects.all()[::-1]
-        context['post_categories'] = BlogCategory.objects.all()
-        return context
+class BlogPostListView(ListView):
+    model = BlogPost
+    template_name = "blog/bloghome.html"
+    context_object_name = "blog_posts"
+    ordering = ["-date_posted"]
+    paginate_by = 9
 
 
 class BlogDetailView(DetailView):
@@ -61,6 +60,7 @@ class BlogCategoryListView(ListView):
     model = BlogPost
     template_name = "blog/category_posts.html"
     context_object_name = "category_posts"
+    paginate_by = 9
 
 
     def get_queryset(self):
