@@ -3,14 +3,12 @@ from django.views.generic import ListView, DetailView, TemplateView
 from .models import ProjectPost, ProjectCategory
 
 
-class ProjectPostListView(TemplateView):
+class ProjectPostListView(ListView):
+    model = ProjectPost
     template_name = "project/projecthome.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['projects'] = ProjectPost.objects.all()[::-1]
-        context['project_categories'] = ProjectCategory.objects.all()
-        return context
+    context_object_name = "project_posts"
+    ordering = ["-date_posted"]
+    paginate_by = 8
 
 
 class ProjectDetailView(DetailView):
@@ -24,6 +22,7 @@ class ProjectCategoryListView(ListView):
     model = ProjectPost
     template_name = "project/category_projects.html"
     context_object_name = "category_projects"
+    paginate_by = 8
 
 
     def get_queryset(self):
