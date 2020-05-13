@@ -12,12 +12,12 @@
   <div class="uk-tile uk-tile-muted uk-width-expand@m">
       <p class="uk-text-small uk-text-left">
       🏷 known as fictionhead. blue. filmmaker. developer. entrepreneur.<br>
-      🛩 interests in aviation. psychology. art. music.<br>
-      💙 loves being multidisciplinary. problem-solving. challenging to herself. <br>
-      📚 received a scholarship from Goldman Sachs 10.000 Women Entrepreneur. Endeavor Create Up. Anadolu Foundation The Women of Value Developing Istanbul.<br>
+      🧩 interests in psychology. art. music. literature. aviation.<br>
       👣 walks and explores her own road. own ways. not others.<br>
-      🎯 worked for Al Jazeera, Coca Cola, Greenpeace, Gittigidiyor eBay, Garanti Emeklilik, Finansbank, Ağaoğlu, Cumhuriyet, Kala Film, Sziget Festival, Koruncuk, KAÇUV, BKM, NTV, JLT, TRT, and more.<br>
-      📌 founded, worked, led, and made creative projects in Parazit Film & Digital Workz. Kısa İyidir (aka Short is Good).</p>
+      💙 loves being multidisciplinary. problem-solving. challenging to herself. <br>
+      📌 founded, worked, led, and made creative projects in Parazit Film & Digital Workz. Kısa İyidir (aka Short is Good).<br>
+      📚 received a scholarship from Goldman Sachs 10.000 Women Entrepreneur. Endeavor Create Up. Anadolu Foundation The Women of Value Developing Istanbul.<br>
+      🎯 worked for Al Jazeera, Coca Cola, Greenpeace, Gittigidiyor eBay, Garanti Emeklilik, Finansbank, Ağaoğlu, Cumhuriyet, Kala Film, Sziget Festival, Koruncuk, KAÇUV, BKM, NTV, JLT, TRT, and more.</p>
   </div>
 </div>
 
@@ -26,22 +26,25 @@
 <div class="uk-child-width-1-2@s uk-grid-collapse uk-text-center" uk-grid>
   <div class="uk-tile uk-tile-primary">
     <h1 class="uk-text-bold">as a Filmmaker</h1>
-    <p class="uk-text-small uk-text-left">⌛️ works as a film producer. director. marketing expert. film festival curator.<br>
+    <p class="uk-text-small uk-text-left">
+      ⌛️ works as a film producer. director. marketing expert. film festival curator.<br>
       🎬 creates, writes and shoots film. commercial. documentary. short film. video.<br>
-      📷 shoots music bands. live performances. music festivals.<br>
+      📷 shoots photographs for music bands. live performances. music festivals.<br>
       🎞 hosts filmmaking workshops. podcasts. talks. interviews.<br>
-      🏆 awarded by film festivals. Republic of Turkey Ministry of Culture. TÜRSAK.<br>
       🎓 graduated from Marmara University in fine arts academy, film.<br>
+      🏆 awarded by film festivals. Republic of Turkey Ministry of Culture. TÜRSAK.<br>
   </div>
 
   <!-- Black section -->
   <div class="uk-tile uk-tile-secondary">
     <h1 class="uk-text-bold">as a Developer</h1>
-    <p class="uk-text-small uk-text-left">⏳ works as a developer with Python. Django. Flask.<br>
-      ⏳ uses Pandas. Selenium. BeautifulSoup. NumPy.<br>
-      🖥 develops digital projects. back-end works.<br>
-      🖥 codes for contributing to life. contributing to the community.<br>
-      📜 certificated from Michigan University on python. DataCamp on Data Science.</p>
+    <p class="uk-text-small uk-text-left">
+      ⏳ works as a Python Developer.<br>
+      🖥 develops webapps. digital projects. back-end works.<br>
+      🧠 focuses on Django. Flask. Pandas. Selenium. BeautifulSoup. NumPy.<br>
+      🛠 uses Git. Heroku. MongoDB. SQL. AWS. CSS. HTML5. <br>
+      💪 codes for contributing to life. contributing to the community.<br>
+      📜 certificated from Michigan University on Python. DataCamp on Data Science.</p>
   </div>
 </div>
 
@@ -51,6 +54,7 @@
 
 <!-- Blog category section -->
 <div uk-grid>
+  <p class="uk-link-muted uk-text-muted uk-text-uppercase uk-text-small uk-text-bold"><a href="{% url "blog-home" %}">All</a></p>
   {% for cat in post_categories %}
   <p class="uk-link-muted uk-text-muted uk-text-uppercase uk-text-small uk-text-bold"><a href="{{ cat.get_absolute_url }}">{{ cat.title }}</a></p>
 
@@ -83,6 +87,7 @@
 
 <!-- Project category section -->
 <div uk-grid>
+  <p class="uk-link-muted uk-text-muted uk-text-uppercase uk-text-small uk-text-bold"><a href="{% url "project-home" %}">All</a></p>
   {% for cat in project_categories %}
   <p class="uk-link-muted uk-text-muted uk-text-uppercase uk-text-small uk-text-bold"><a href="{{ cat.get_absolute_url }}">{{ cat.title }}</a></p>
   {% endfor %}
@@ -92,8 +97,8 @@
 <div class="uk-child-width-1-2@m " uk-grid>
   {% for project in latest_projects %}
   <div class="uk-section-default">
-    <div class="uk-section uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" style="background-image: url({{ project.image.url }})">
-    </div>
+    <a href="{{ project.get_absolute_url }}"><div class="uk-section uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" style="background-image: url({{ project.image.url }})">
+    </div></a>
     <div class="uk-padding-small uk-background-muted">
       <h1 class="uk-link-heading uk-card-title uk-text-bold uk-heading-divider uk-text-center"><a href="{{ project.get_absolute_url }}">{{ project.title }}</a></h1>
       <p>{{ project.summary }}</p>
