@@ -5,6 +5,13 @@
 
 <h1 class="uk-text-bold uk-heading-divider uk-text-center uk-text-muted uk-text-uppercase uk-text-large">All Projects</h1>
 
+<div uk-grid>
+  <p class="uk-link-muted uk-text-muted uk-text-uppercase uk-text-small uk-text-bold"><a href="{% url "project-home" %}">All</a></p>
+  {% for cat in project_categories %}
+  <p class="uk-link-muted uk-text-muted uk-text-uppercase uk-text-small uk-text-bold"><a href="{{ cat.get_absolute_url }}">{{ cat.title }}</a></p>
+  {% endfor %}
+</div>
+
 
 <div class="uk-child-width-1-2@m" uk-grid>
   {% for project in project_posts %}
@@ -22,5 +29,31 @@
   {% endfor %}
 </div>
 
+<!-- pagination -->
+
+<div class="uk-flex-center">
+  <ul class="uk-pagination uk-flex-center" uk-margin>
+    {% if is_paginated %}
+        {% if page_obj.has_previous %}
+          <li><a href="?page=1">First</a></li>
+          <li><a href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+          {% if page_obj.number == num %}
+            <li class="uk-active"><a href="?page={{ num }}">{{ num }}</a></li>
+          {% elif num > page_obj.number|add:"-3" and num < page_obj.number|add:"3" %}
+            <li><a href="?page={{ num }}">{{ num }}</a></li>
+          {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}">Next</a></li>
+            <li><a href="?page={{ page_obj.paginator.num_pages }}">Last</a></li>
+        {% endif %}
+
+    {% endif %}
+  </ul>
+</div>
 
 {% endblock content %}
