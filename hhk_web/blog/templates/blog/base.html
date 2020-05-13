@@ -4,6 +4,8 @@
 <head>
   {% if object.title %}
       <title>Heval Hazal Kurt - {{ object.title }}</title>
+  {% elif title %}
+      <title>Heval Hazal Kurt - {{ title }}</title>
   {% elif view.kwargs.slug %}
       <title>Heval Hazal Kurt - {{ view.kwargs.slug|title }}</title>
   {% else %}
