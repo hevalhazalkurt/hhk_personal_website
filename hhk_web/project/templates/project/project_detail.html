@@ -12,4 +12,18 @@
         <a href="{{object.link}}" target="_blank">{{ object.link }}</a>
     </div>
 
+    <h1 class="uk-text-bold uk-heading-divider uk-text-center uk-text-muted uk-text-uppercase uk-text-large">Related Projects</h1>
+    <div class="uk-child-width-1-2@m " uk-grid>
+      {% for rel in related_projects %}
+      <div class="uk-section-default">
+        <a href="{{ rel.get_absolute_url }}"><div class="uk-section uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" style="background-image: url({{ rel.image.url }})">
+        </div></a>
+        <div class="uk-padding-small uk-background-muted">
+          <h1 class="uk-link-heading uk-card-title uk-text-bold uk-heading-divider uk-text-center"><a href="{{ rel.get_absolute_url }}">{{ rel.title }}</a></h1>
+          <p>{{ rel.summary }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
 {% endblock content %}
