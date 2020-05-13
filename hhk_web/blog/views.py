@@ -35,8 +35,8 @@ class HomePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['latest_posts'] = BlogPost.objects.all()[::-1][:3]
-        context['latest_projects'] = ProjectPost.objects.all()[::-1][:4]
+        context['latest_posts'] = BlogPost.objects.order_by('-date_posted')[:3]
+        context['latest_projects'] = ProjectPost.objects.order_by('-date_posted')[:4]
         context['post_categories'] = BlogCategory.objects.all()
         context['project_categories'] = ProjectCategory.objects.all()
         return context
@@ -50,10 +50,20 @@ class BlogPostListView(ListView):
     ordering = ["-date_posted"]
     paginate_by = 9
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['post_categories'] = BlogCategory.objects.all()
+        return context
+
 
 class BlogDetailView(DetailView):
     model = BlogPost
     template_name = "blog/blog_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['related_posts'] = BlogPost.objects.filter(category=self.object.category).order_by('?')[:3]
+        return context
 
 
 class BlogCategoryListView(ListView):
@@ -66,3 +76,9 @@ class BlogCategoryListView(ListView):
     def get_queryset(self):
         category = get_object_or_404(BlogCategory, slug=self.kwargs.get("slug"))
         return BlogPost.objects.filter(category_id=category).order_by("-date_posted")
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['post_categories'] = BlogCategory.objects.all()
+        return context
