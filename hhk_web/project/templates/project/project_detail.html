@@ -2,14 +2,21 @@
 
 {% block content %}
 
-    <div class="uk-card uk-card-default uk-card-body">
+
+    <div class="uk-card uk-card-default uk-card-body uk-width-xxlarge uk-align-center">
         <img src="{{ object.image.url }}" />
-        <h1 class="uk-text-bold uk-text-center">{{ object.title }}</h1>
-        <p class="uk-text-bold uk-text-center"><a href="{{ object.category.get_absolute_url }}">{{ object.category }}</a></p>
-        <p class="uk-text-muted uk-text-center">as {{ object.position }} for {{ object.client }}</p> <hr>
-        <p>{{ object.summary|safe }}</p>
+        <h1 class="uk-text-bold uk-text-center" >{{ object.title }}</h1>
+
+        <p class="uk-article-meta uk-text-center">in <u><a class="uk-text-bold" href="{{ object.category.get_absolute_url }}">{{ object.category }}</a></u> as <span class="uk-text-bold" >{{ object.position }}</span> for <span class="uk-text-bold" >{{ object.client }} </span></p>
+
+        {% if object.link %}
+        <p class="uk-article-meta uk-text-center"><a class="uk-text-primary uk-link-text uk-text-uppercase uk-text-bold" href="{{ object.link }}" target="_blank">See Project</a> </p>
+        {% endif %}
+
+        <hr>
+        <p class="uk-text-lead uk-text-muted uk-text-justify">{{ object.summary|safe }}</p>
+        <hr>
         <p>{{ object.content|safe }}</p>
-        <a href="{{object.link}}" target="_blank">{{ object.link }}</a>
     </div>
 
     <h1 class="uk-text-bold uk-heading-divider uk-text-center uk-text-muted uk-text-uppercase uk-text-large">Related Projects</h1>
