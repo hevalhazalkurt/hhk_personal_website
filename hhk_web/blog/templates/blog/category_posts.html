@@ -4,25 +4,27 @@
 
 <h1 class="uk-text-bold uk-heading-divider uk-text-center uk-text-muted uk-text-uppercase uk-text-large">Blog Posts in {{ view.kwargs.slug }} ({{ page_obj.paginator.count }})</h1>
 
-<div uk-grid>
-  <p class="uk-link-muted uk-text-muted uk-text-uppercase uk-text-small uk-text-bold"><a href="{% url "blog-home" %}">All</a></p>
+<div class="category-wrapper">
+  <p class="category-button"><a href="{% url "blog-home" %}">All</a></p>
   {% for cat in post_categories %}
-  <p class="uk-link-muted uk-text-muted uk-text-uppercase uk-text-small uk-text-bold"><a href="{{ cat.get_absolute_url }}">{{ cat.title }}</a></p>
+  <p class="category-button"><a href="{{ cat.get_absolute_url }}">{{ cat.title }}</a></p>
   {% endfor %}
 </div>
 
 
-<div class="uk-child-width-1-3@m " uk-grid>
+<div class="blog-list">
   {% for post in category_posts %}
-  <div class="uk-section-default">
-    <a href="{{ post.get_absolute_url }}"><div class="uk-section uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-border-rounded" style="background-image: url({{ post.image.url }})">
-    </div></a>
 
+  <div class="blog-list__item">
+    <a href="{{ post.get_absolute_url }}">
+    <img class="blog-list-item__image" src="{{ post.image.url }}">
     <div class="uk-section-default uk-padding-small">
-      <h1 class="uk-link-heading uk-card-title uk-text-bold uk-heading-divider uk-text-center"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
-      <div class="uk-grid uk-flex-between uk-text-small uk-text-muted">
+      <h1 class="blog-list-item__title">{{ post.title }}</h1>
+    </a>
+      <div class="blog-list-item__meta">
       <p><a href="{{ post.category.get_absolute_url }}" class="uk-link-heading">{{ post.category|upper }}</a></p>
-      <p>{{ post.date_posted|date:"F d, Y" }}</p></div>
+      <p> {{ post.date_posted|date:"F d, Y" }}</p>
+    </div>
       <p>{{ post.summary }}</p>
     </div>
   </div>

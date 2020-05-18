@@ -2,28 +2,31 @@
 
 {% block content %}
 
-    <div class="uk-card uk-card-default uk-card-body uk-width-xxlarge uk-align-center ">
-        <img class="uk-border-rounded" src="{{ object.image.url }}" />
-        <h1 class="uk-text-bold uk-text-center">{{ object.title }}</h1>
-        <p class="uk-text-muted uk-text-center">by {{ object.author }} in <a href="{{ object.category.get_absolute_url }}">{{ object.category }}</a> on {{ object.date_posted|date:"F d, Y" }}</p> <hr>
-        <p>{{ object.summary|safe }}</p> <hr>
-        <p>{{ object.content|safe }}</p>
+    <div class="blog-post__wrapper">
+        <img class="blog-post__image" src="{{ object.image.url }}" />
+        <h1 class="blog-post__title">{{ object.title }}</h1>
+        <p class="blog-post__meta">by {{ object.author }} in <a href="{{ object.category.get_absolute_url }}">{{ object.category }}</a> on {{ object.date_posted|date:"F d, Y" }}</p>
+        <p class="blog-post__sum">{{ object.summary|safe }}</p>
+        <div class="blog-post__content">{{ object.content|safe }}</div>
 
     </div>
 
-    <h1 class="uk-text-bold uk-heading-divider uk-text-center uk-text-muted uk-text-uppercase uk-text-large uk-width-xxlarge uk-align-center">Related Posts</h1>
-    <div class="uk-child-width-1-3@m uk-padding-small " uk-grid>
-      {% for rel in related_posts %}
-      <div class="uk-section-default">
-        <div class="uk-section uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-background-blend-overlay uk-background-secondary" style="background-image: url({{ rel.image.url }})">
+    <h3 class="post-section__title">Related Posts</h3>
 
-          <div class="uk-card-body">
-            <h1 class="uk-link-heading uk-card-title uk-text-bold uk-heading-divider uk-text-center"><a href="{{ rel.get_absolute_url }}">{{ rel.title }}</a></h1>
-            <p>{{ rel.summary }}</p>
+
+    <div class="related-posts__wrapper">
+      {% for rel in related_posts %}
+      <a class="related-post-item" href="{{ rel.get_absolute_url }}">
+
+        <div class="related-post-item__bg" style="background-image: url({{ rel.image.url }})">
+          <div class="related-post-item__overlay"></div>
+          <div class="related-post-item__meta">
+            <h1 class="related-post-item__title">{{ rel.title }}</h1>
+            <p class="related-post-item__desc">{{ rel.summary }}</p>
           </div>
 
         </div>
-      </div>
+      </a>
       {% endfor %}
     </div>
 

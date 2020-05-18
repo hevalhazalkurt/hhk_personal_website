@@ -2,34 +2,38 @@
 
 {% block content %}
 
+    <div class="blog-post__wrapper">
+        <img class="blog-post__image" src="{{ object.image.url }}" />
+        <h1 class="blog-post__title" >{{ object.title }}</h1>
 
-    <div class="uk-card uk-card-default uk-card-body uk-width-xxlarge uk-align-center">
-        <img src="{{ object.image.url }}" />
-        <h1 class="uk-text-bold uk-text-center" >{{ object.title }}</h1>
-
-        <p class="uk-article-meta uk-text-center">in <u><a class="uk-text-bold" href="{{ object.category.get_absolute_url }}">{{ object.category }}</a></u> as <span class="uk-text-bold" >{{ object.position }}</span> for <span class="uk-text-bold" >{{ object.client }} </span></p>
+        <p class="project-details">in <u><a class="uk-text-bold" href="{{ object.category.get_absolute_url }}">{{ object.category }}</a></u> as <span class="uk-text-bold" >{{ object.position }}</span> for <span class="uk-text-bold" >{{ object.client }} </span></p>
 
         {% if object.link %}
-        <p class="uk-article-meta uk-text-center"><a class="uk-text-primary uk-link-text uk-text-uppercase uk-text-bold" href="{{ object.link }}" target="_blank">See Project</a> </p>
+        
+        <a class="project-link" href="{{ object.link }}" target="_blank">See Project  <i data-feather="external-link"></i></a>
         {% endif %}
 
-        <hr>
-        <p class="uk-text-lead uk-text-muted uk-text-justify">{{ object.summary|safe }}</p>
-        <hr>
-        <p>{{ object.content|safe }}</p>
+        <p class="project-sum">{{ object.summary|safe }}</p>
+
+        <div class="blog-post__content">{{ object.content|safe }}</div>
     </div>
 
-    <h1 class="uk-text-bold uk-heading-divider uk-text-center uk-text-muted uk-text-uppercase uk-text-large">Related Projects</h1>
-    <div class="uk-child-width-1-2@m " uk-grid>
+    <h1 class="post-section__title">Related Projects</h1>
+
+
+    <div class="related-posts__wrapper">
       {% for rel in related_projects %}
-      <div class="uk-section-default">
-        <a href="{{ rel.get_absolute_url }}"><div class="uk-section uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" style="background-image: url({{ rel.image.url }})">
-        </div></a>
-        <div class="uk-padding-small uk-background-muted">
-          <h1 class="uk-link-heading uk-card-title uk-text-bold uk-heading-divider uk-text-center"><a href="{{ rel.get_absolute_url }}">{{ rel.title }}</a></h1>
-          <p>{{ rel.summary }}</p>
+      <a class="related-post-item" href="{{ rel.get_absolute_url }}">
+
+        <div class="related-post-item__bg" style="background-image: url({{ rel.image.url }})">
+          <div class="related-post-item__overlay"></div>
+          <div class="related-post-item__meta">
+            <h1 class="related-post-item__title">{{ rel.title }}</h1>
+            <p class="related-post-item__desc">{{ rel.summary }}</p>
+          </div>
+
         </div>
-      </div>
+      </a>
       {% endfor %}
     </div>
 
