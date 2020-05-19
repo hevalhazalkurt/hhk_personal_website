@@ -8,7 +8,7 @@ class ProjectPostListView(ListView):
     template_name = "project/projecthome.html"
     context_object_name = "project_posts"
     ordering = ["-date_posted"]
-    paginate_by = 8
+    paginate_by = 5
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -22,7 +22,7 @@ class ProjectDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['related_projects'] = ProjectPost.objects.filter(category=self.object.category).order_by('?')[:2]
+        context['related_projects'] = ProjectPost.objects.filter(category=self.object.category).order_by('?')[:3]
         return context
 
 
@@ -32,7 +32,7 @@ class ProjectCategoryListView(ListView):
     model = ProjectPost
     template_name = "project/category_projects.html"
     context_object_name = "category_projects"
-    paginate_by = 8
+    paginate_by = 5
 
 
     def get_queryset(self):
