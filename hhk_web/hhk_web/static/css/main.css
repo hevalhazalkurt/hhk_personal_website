@@ -1128,3 +1128,8 @@ footer p {
   color: var(--text-gray-light) !important;
   word-wrap: break-word;
 }
+
+.related-post-section__title {
+  margin-left: 20px;
+  padding-left: 10px;
+}
