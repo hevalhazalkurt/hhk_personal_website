@@ -2,23 +2,33 @@
 {% load static %}
 {% block content %}
 
+<!-- Hello section -->
+
 <section class="about-section">
-  <div class="greet"><img class="hand" src="{% static 'img/hello.png' %}">  
+  <div class="greet"><img class="hand" src="{% static 'img/hello.png' %}">
      <h1 class="hello-title">hello, I'm Heval</h1></div>
-  <div class="tagline">known as fictionhead. blue. filmmaker. developer. entrepreneur.</div>
-  <div class="details">Creates apps with Python, stuff and another things</div>
-  <div class="social"> 
+  <div class="tagline">🏷 known as fictionhead. blue. developer. filmmaker. entrepreneur.</div>
+  <div class="details">🧠 focuses on Python. Django. Flask. Pandas.<br>
+                      🖥 develops webapps. digital projects. back-end works.<br>
+                      💪 codes for contributing to life. contributing to the community.<br>
+                      🎬 creates, writes and shoots film. commercial. documentary. short film. video.<br>
+                       🏆 awarded by film festivals. Republic of Turkey Ministry of Culture. TÜRSAK.<br>
+                       💙 loves being multidisciplinary. problem-solving. challenging to herself.<br>
+                       🧩 interests in psychology. art. music. literature. aviation.<br>
+  <div class="social">
     <ul class="social-links__wrapper">
-    <li><a href="https://www.linkedin.com/in/hevalhazalkurt/" target="_blank"><i data-feather="linkedin"></i></a></li>
-    <li><a href="https://github.com/hevalhazalkurt" target="_blank"><i data-feather="github"></i></a></li>
-    <li><a href="https://www.instagram.com/hevalhazalkurt/" target="_blank"><i data-feather="instagram"></i></a></li>
-    <li><a href="https://twitter.com/hevalandsteven" target="_blank"><i data-feather="twitter"></i></a></li>
-    <li><a href="https://www.facebook.com/hevalvehazal" target="_blank"><i data-feather="facebook"></i></a></li>
-    <li><a href="https://www.youtube.com/user/kisaiyidir" target="_blank"><i data-feather="youtube"></i></a></li>
-    <li><a href="https://www.codewars.com/users/hevalhazalkurt" target="_blank"><i data-feather="code"></i></a></li>
+    <li><a href="https://www.linkedin.com/in/hevalhazalkurt/" target="_blank" title="LinkedIn"><i data-feather="linkedin"></i></a></li>
+    <li><a href="https://github.com/hevalhazalkurt" target="_blank" title="Github"><i data-feather="github"></i></a></li>
+    <li><a href="https://www.instagram.com/hevalhazalkurt/" target="_blank" title="Instagram"><i data-feather="instagram"></i></a></li>
+    <li><a href="https://twitter.com/hevalandsteven" target="_blank" title="Twitter"><i data-feather="twitter"></i></a></li>
+    <li><a href="https://www.facebook.com/hevalvehazal" target="_blank" title="Facebook"><i data-feather="facebook"></i></a></li>
+    <li><a href="https://www.youtube.com/user/kisaiyidir" target="_blank" title="Youtube"><i data-feather="youtube"></i></a></li>
+    <li><a href="https://www.codewars.com/users/hevalhazalkurt" target="_blank" title="CodeWars"><i data-feather="code"></i></a></li>
+    <li><a href="https://www.hackerrank.com/hevalhazalkurt" target="_blank" title="HackerRank"><i data-feather="code"></i></a></li>
   </ul>
 </div>
 </section>
+
 
 <!-- Blog section -->
 <section class="post-section">
@@ -32,6 +42,7 @@
   {% endfor %}
 </div>
 
+
 <!-- Blog post section -->
 
 <div class="post-container">
@@ -42,6 +53,7 @@
       <div class="post-item__overlay"></div>
       <div class="post-meta">
         <h1 class="post-item__title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
+        <h7 class="post-item__title"><a href="{{ post.category.get_absolute_url }}">{{ post.category }}</a></h7>
         <p class="post-item__desc">{{ post.summary }}</p>
       </div>
 
@@ -71,9 +83,10 @@
   <div class="post-item">
       <div class="post-item__background" style="background-image: url({{ project.image.url }})">
         <div class="post-item__overlay"></div>
- 
+
     <div class="post-meta">
       <h1 class="post-item__title"><a href="{{ project.get_absolute_url }}">{{ project.title }}</a></h1>
+      <h7 class="post-item__title"><a href="{{ project.category.get_absolute_url }}">{{ project.category }}</a></h7> <br>
       <p class="post-meta__see-details">See Project <svg width="50px" height="16px" viewBox="0 0 50 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Arrow</title> <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" data-darkreader-inline-fill="" data-darkreader-inline-stroke="" style="--darkreader-inline-fill:none; --darkreader-inline-stroke:none;"><g transform="translate(0.000000, -5.000000)" fill="currentColor" fill-rule="nonzero" data-darkreader-inline-fill="" style="--darkreader-inline-fill:currentColor;"><g transform="translate(0.000000, 5.000000)"><polygon points="0.3 6.18 47.1 6.18 47.1 8.58 0.3 8.58"></polygon> <polygon points="41.0533689 15.6 39.3 13.9695042 45.9356357 7.8 39.3 1.63049585 41.0533689 0 49.44 7.80002794"></polygon></g></g></g></svg>
       </p>
     </div>
