@@ -5,13 +5,12 @@
     <div class="blog-post__wrapper">
         <img class="blog-post__image" src="{{ object.image.url }}" />
         <h1 class="blog-post__title">{{ object.title }}</h1>
-        <p class="blog-post__meta">by {{ object.author }} in <a href="{{ object.category.get_absolute_url }}">{{ object.category }}</a> on {{ object.date_posted|date:"F d, Y" }}</p>
-        <p class="blog-post__sum">{{ object.summary|safe }}</p>
+        <p class="blog-post__sum">{{ object.summary|safe }}</p> <br>
+        <p class="blog-post__meta">by {{ object.author }} in <a href="{{ object.category.get_absolute_url }}">{{ object.category }}</a> on {{ object.date_posted|date:"F d, Y" }}</p> <br>
         <div class="blog-post__content">{{ object.content|safe }}</div>
-
     </div>
 
-    <h3 class="post-section__title">Related Posts</h3>
+    <h3 class="related-post-section__title container">Related Posts</h3>
 
 
     <div class="related-posts__wrapper">
@@ -28,6 +27,7 @@
         </div>
       </a>
       {% endfor %}
+
     </div>
 
 {% endblock content %}
