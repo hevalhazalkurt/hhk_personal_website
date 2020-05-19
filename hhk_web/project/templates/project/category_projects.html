@@ -4,14 +4,17 @@
 
 {% block content %}
 
-<h1 class="uk-text-bold uk-heading-divider uk-text-center uk-text-muted uk-text-uppercase uk-text-large">Projects in {{ view.kwargs.slug }} ({{ page_obj.paginator.count }})</h1>
+<div class="page-header">
+<h1 class="post-section__title">Projects in {{ view.kwargs.slug }} ({{ page_obj.paginator.count }})</h1>
 
 <div class="category-wrapper">
-  <p class="category-button"><a href="{% url "project-home" %}">All</a></p>
+  <p class="category-button"><a href="{% url "blog-home" %}">All</a></p>
   {% for cat in project_categories %}
   <p class="category-button"><a href="{{ cat.get_absolute_url }}">{{ cat.title }}</a></p>
   {% endfor %}
 </div>
+</div>
+
 
 <div class="blog-list">
   {% for project in category_projects %}
