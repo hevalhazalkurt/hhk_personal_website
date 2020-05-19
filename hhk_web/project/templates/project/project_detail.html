@@ -6,19 +6,15 @@
         <img class="blog-post__image" src="{{ object.image.url }}" />
         <h1 class="blog-post__title" >{{ object.title }}</h1>
 
-        <p class="project-details">in <u><a class="uk-text-bold" href="{{ object.category.get_absolute_url }}">{{ object.category }}</a></u> as <span class="uk-text-bold" >{{ object.position }}</span> for <span class="uk-text-bold" >{{ object.client }} </span></p>
-
-        {% if object.link %}
-        
-        <a class="project-link" href="{{ object.link }}" target="_blank">See Project  <i data-feather="external-link"></i></a>
-        {% endif %}
-
         <p class="project-sum">{{ object.summary|safe }}</p>
 
+        <p class="project-details">in <u><a class="uk-text-bold" href="{{ object.category.get_absolute_url }}">{{ object.category }}</a></u> as <span class="uk-text-bold" >{{ object.position }}</span> for <span class="uk-text-bold" >{{ object.client }} </span></p><br>
+
         <div class="blog-post__content">{{ object.content|safe }}</div>
+
     </div>
 
-    <h1 class="post-section__title">Related Projects</h1>
+    <h3 class="related-post-section__title container">Related Projects</h3>
 
 
     <div class="related-posts__wrapper">
