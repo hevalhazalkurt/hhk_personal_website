@@ -25,7 +25,7 @@
       <h1 class="blog-list-item__title">{{ post.title }}</h1>
     </a>
       <div class="blog-list-item__meta">
-      <p><a href="{{ post.category.get_absolute_url }}" class="uk-link-heading">{{ post.category|upper }}</a></p>
+      <p><a href="{{ post.category.get_absolute_url }}" class="uk-link-heading">{{ post.category|upper }}</a></p> <p>|</p> 
       <p> {{ post.date_posted|date:"F d, Y" }}</p>
     </div>
       <p>{{ post.summary }}</p>
