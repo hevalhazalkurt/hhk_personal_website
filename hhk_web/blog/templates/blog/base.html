@@ -1,62 +1,150 @@
 {% load static %}
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+
 <head>
-  {% if object.title %}
-      <title>Heval Hazal Kurt - {{ object.title }}</title>
-  {% elif title %}
+
+
+  <!-- meta tags for different kind of pages -->
+  {% with home="http://127.0.0.1:8000" %}
+
+    {% if object.title %}
+      <title>{{ object.title }}</title>
+      <meta property="og:title" content="{{ object.title }}">
+      <meta property="twitter:title" content="{{ object.title }}">
+
+      <meta name="description" content="{{ object.summary }}">
+      <meta property="og:description" content="{{ object.summary }}">
+      <meta property="twitter:description" content="{{ object.summary }}">
+
+      <meta property="og:image" content="{{ home }}{{ object.image.url }}">
+      <meta property="twitter:image" content="{{ home }}{{ object.image.url }}">
+
+    {% elif title %}
       <title>Heval Hazal Kurt - {{ title }}</title>
-  {% elif view.kwargs.slug %}
-      <title>Heval Hazal Kurt - {{ view.kwargs.slug|title }}</title>
-  {% else %}
+      <meta property="og:title" content="{{ title }}">
+      <meta property="twitter:title" content="{{ title }}">
+
+          {% if summary %}
+              <meta name="description" content="{{ summary }}">
+              <meta property="og:description" content="{{ summary }}">
+              <meta property="twitter:description" content="{{ summary }}">
+          {% elif content %}
+              <meta name="description" content="{{ content }}">
+              <meta property="og:description" content="{{ content }}">
+              <meta property="twitter:description" content="{{ content }}">
+          {% else %}
+              <meta name="description" content="Heval Hazal Kurt's personal blog and portfolio. She is writing her experiences, knowledges, snippets and other useful informations about programming and filmmaking.">
+              <meta property="og:title" content="Heval Hazal Kurt's personal blog and portfolio. She is writing her experiences, knowledges, snippets and other useful informations about programming and filmmaking.">
+              <meta property="twitter:title" content="Heval Hazal Kurt's personal blog and portfolio. She is writing her experiences, knowledges, snippets and other useful informations about programming and filmmaking.">
+          {% endif %}
+
+
+          {% if image.url %}
+              <meta property="og:image" content="{{ home }}{{ image.url }}">
+              <meta property="twitter:image" content="{{ home }}{{ image.url }}">
+          {% else %}
+              <meta property="og:image" content="{{ home }}/media/heval_hazal_kurt_web_k.png">
+              <meta property="twitter:image" content="{{ home }}/media/heval_hazal_kurt_web_k.png">
+          {% endif %}
+
+
+    {% elif view.kwargs.slug %}
+      <title>Heval Hazal Kurt - {{ view.kwargs.slug|title }} Category</title>
+      <meta property="og:title" content="{{ view.kwargs.slug|title }}">
+      <meta property="twitter:title" content="{{ view.kwargs.slug|title }}">
+
+      <meta name="description" content="Read more blog posts about {{ view.kwargs.slug }} written by Heval Hazal Kurt.">
+      <meta property="og:description" content="Read more blog posts about {{ view.kwargs.slug }} written by Heval Hazal Kurt.">
+      <meta property="twitter:description" content="Read more blog posts about {{ view.kwargs.slug }} written by Heval Hazal Kurt.">
+
+          {% if view.kwargs.image.url %}
+              <meta property="og:image" content="{{ home }}{{ view.kwargs.image.url }}">
+              <meta property="twitter:image" content="{{ home }}{{ view.kwargs.image.url }}">
+          {% else %}
+              <meta property="og:image" content="{{ home }}/media/heval_hazal_kurt_web_k.png">
+              <meta property="twitter:image" content="{{ home }}/media/heval_hazal_kurt_web_k.png">
+          {% endif %}
+
+
+
+    {% else %}
       <title>Heval Hazal Kurt - Filmmaker & Developer</title>
-  {% endif %}
+      <meta property="og:title" content="Heval Hazal Kurt - Filmmaker & Developer">
+      <meta property="twitter:title" content="Heval Hazal Kurt - Filmmaker & Developer">
+
+      <meta name="description" content="Heval Hazal Kurt's personal blog and portfolio. She is writing her experiences, knowledges, snippets and other useful informations about programming and filmmaking.">
+      <meta property="og:title" content="Heval Hazal Kurt's personal blog and portfolio. She is writing her experiences, knowledges, snippets and other useful informations about programming and filmmaking.">
+      <meta property="twitter:title" content="Heval Hazal Kurt's personal blog and portfolio. She is writing her experiences, knowledges, snippets and other useful informations about programming and filmmaking.">
+
+      <meta property="og:image" content="{{ home }}/media/heval_hazal_kurt_web_k.png">
+      <meta property="twitter:image" content="{{ home }}/media/heval_hazal_kurt_web_k.png">
+
+    {% endif %}
+  {% endwith %}
+
+    <meta property="og:type" content="website">
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="twitter:card" content="summary_large_image">
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="twitter:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="author" content="Heval Hazal Kurt">
+    <meta property="og:author" content="Heval Hazal Kurt">
+    <meta property="twitter:author" content="Heval Hazal Kurt">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=contain">
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
 
+  <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
-   <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css" />
-   <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-  <link rel="stylesheet"
-  href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
 </head>
 
 <body>
 
   <header class="main-navigation">
     <nav class="nav">
-      <a class="logo" href="{% url "home" %}"  style="background-image: url(media/hevalhazalkurt.jpg)">
+      <a class="logo" href="{% url "home" %}" style="background-image: url({% static 'img/hevalhazalkurt.jpg' %})">
       </a>
- 
-        <ul class="uk-navbar-nav">
-          <li class="effect-1"><a href="{% url "blog-home" %}">Blog</a></li>
-          <li class="effect-1"><a href="{% url "project-home" %}">Projects</a></li>
-          <li class="effect-1"><a href="{% url "about" %}">About</a></li>
-        </ul>
+
+      <ul class="uk-navbar-nav">
+        <li class="effect-1"><a href="{% url "about" %}">About</a></li>
+        <li class="effect-1"><a href="{% url "blog-home" %}">Blog</a></li>
+        <li class="effect-1"><a href="{% url "project-home" %}">Projects</a></li>
+      </ul>
     </nav>
   </header>
-<div class="container">
+  <div class="container">
+
+
     {% block content %}
     {% endblock %}
 
 
-</div>
-<footer>
-  <p class="footer-left"></p>
-   <p class="footer-center">Built with ❤️ and Django.<br>
-   © Heval Hazal Kurt {% now "Y" %}
-  </p>
-  <p class="footer-right"></p>
-  
-</footer>
+  </div>
+  <footer>
+    <p class="footer-left"></p>
+    <p class="footer-center">Built with 💙 and Django.<br>
+      © Heval Hazal Kurt {% now "Y" %}
+    </p>
+    <p class="footer-right"></p>
+
+  </footer>
   <script>
- hljs.initHighlightingOnLoad();
- feather.replace();
+    hljs.initHighlightingOnLoad();
+    feather.replace();
   </script>
-  <script src="{% static 'js/main.js' %}"></script> 
+  <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>
