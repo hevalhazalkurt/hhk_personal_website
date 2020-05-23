@@ -14,21 +14,6 @@ def about(request):
     return render(request, "blog/about.html", {"title": "About"})
 
 
-def contact(request):
-    if request.method == "POST":
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            sender_name = form.cleaned_data['name']
-            sender_email = form.cleaned_data['email']
-            message = "{0} has sent you a new message:\n\n{1}".format(sender_name, form.cleaned_data['message'])
-            send_mail('New message from HHK:', message, sender_email, ['hevalhazal@gmail.com'])
-            return HttpResponse("Thank you for contacting me!")
-    else:
-        form = ContactForm()
-    return render(request, "blog/contact.html", {"form": form})
-    #return render(request, "blog/contact.html", {"title": "Contact"})
-
-
 
 class HomePageView(TemplateView):
     template_name = "blog/home.html"
