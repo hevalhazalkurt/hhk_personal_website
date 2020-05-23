@@ -8,7 +8,7 @@
 
         <p class="project-sum">{{ object.summary|safe }}</p>
 
-        <p class="project-details">in <u><a class="uk-text-bold" href="{{ object.category.get_absolute_url }}">{{ object.category }}</a></u> as <span class="uk-text-bold" >{{ object.position }}</span> for <span class="uk-text-bold" >{{ object.client }} </span></p><br>
+        <p class="project-details">in <u><a href="{{ object.category.get_absolute_url }}">{{ object.category }}</a></u> as <span>{{ object.position }}</span> for <span>{{ object.client }} </span></p><br>
 
         <div class="blog-post__content">{{ object.content|safe }}</div>
 
