@@ -20,11 +20,11 @@
   <div class="blog-list__item">
     <a href="{{ post.get_absolute_url }}">
     <img class="blog-list-item__image" src="{{ post.image.url }}">
-    <div class="uk-section-default uk-padding-small">
+    <div>
       <h1 class="blog-list-item__title">{{ post.title }}</h1>
     </a>
       <div class="blog-list-item__meta">
-      <p><a href="{{ post.category.get_absolute_url }}" class="uk-link-heading">{{ post.category|upper }}</a></p>
+      <p><a href="{{ post.category.get_absolute_url }}">{{ post.category|upper }}</a></p>
       <p> {{ post.date_posted|date:"F d, Y" }}</p>
     </div>
       <p>{{ post.summary }}</p>
@@ -46,7 +46,7 @@
 
         {% for num in page_obj.paginator.page_range %}
           {% if page_obj.number == num %}
-            <li class="uk-active"><a href="?page={{ num }}">{{ num }}</a></li>
+            <li><a href="?page={{ num }}">{{ num }}</a></li>
           {% elif num > page_obj.number|add:"-3" and num < page_obj.number|add:"3" %}
             <li><a href="?page={{ num }}">{{ num }}</a></li>
           {% endif %}
