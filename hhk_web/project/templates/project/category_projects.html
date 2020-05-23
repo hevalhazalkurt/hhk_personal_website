@@ -8,7 +8,7 @@
 <h1 class="post-section__title">Projects in {{ view.kwargs.slug }} ({{ page_obj.paginator.count }})</h1>
 
 <div class="category-wrapper">
-  <p class="category-button"><a href="{% url "blog-home" %}">All</a></p>
+  <p class="category-button"><a href="{% url "project-home" %}">All</a></p>
   {% for cat in project_categories %}
   <p class="category-button"><a href="{{ cat.get_absolute_url }}">{{ cat.title }}</a></p>
   {% endfor %}
@@ -22,11 +22,11 @@
   <div class="blog-list__item">
     <a href="{{ project.get_absolute_url }}">
     <img class="blog-list-item__image" src="{{ project.image.url }}">
-    <div class="uk-section-default uk-padding-small">
+    <div>
       <h1 class="blog-list-item__title">{{ project.title }}</h1>
     </a>
       <div class="blog-list-item__meta">
-      <p><a href="{{ project.category.get_absolute_url }}" class="uk-link-heading">{{ project.category|upper }}</a></p>
+      <p><a href="{{ project.category.get_absolute_url }}" >{{ project.category|upper }}</a></p>
       <p> as {{ project.position }}</p>
     </div>
       <p>{{ project.summary }}</p>
@@ -48,7 +48,7 @@
 
         {% for num in page_obj.paginator.page_range %}
           {% if page_obj.number == num %}
-            <li class="uk-active"><a href="?page={{ num }}">{{ num }}</a></li>
+            <li><a href="?page={{ num }}">{{ num }}</a></li>
           {% elif num > page_obj.number|add:"-3" and num < page_obj.number|add:"3" %}
             <li><a href="?page={{ num }}">{{ num }}</a></li>
           {% endif %}
