@@ -8,24 +8,20 @@
         <p class="blog-post__sum">{{ object.summary|safe }}</p> <br>
         <p class="blog-post__meta">by {{ object.author }} in <a href="{{ object.category.get_absolute_url }}">{{ object.category }}</a> on {{ object.date_posted|date:"F d, Y" }}</p> <br>
 
-        <div class="social">
-        <div class="social-links__wrapper">
-
-        <!-- Twitter share -->
-        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-        <!-- LinkedIn share -->
-        <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
-        <script type="IN/Share" data-url="{{ home }}"></script>
-
-        <!-- Facebook like & share -->
-        <div id="fb-root"></div>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v7.0"></script>
-
-        <div class="fb-like" data-href="{{ home }}" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"> </div>
-        </div></div>
 
         <div class="blog-post__content">{{ object.content|safe }}</div>
+
+        {% with theurl=request.build_absolute_uri %}
+        <div class="social">
+          <ul class="social-links__wrapper">
+            <p class="blog-post__sum">Share on ...</p>
+          <li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{ theurl }}&title={{ object.title }}&summary=mubapp.herokuapp.com&source=MUBapp" target="_blank" title="LinkedIn"><i data-feather="linkedin"></i></a></li>
+          <li><a href="http://twitter.com/share?text={{ object.title }} by @hevalandsteven &url={{ theurl }}&hashtags={{ object.category|lower }}" target="_blank" title="Twitter"><i data-feather="twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ theurl }}" target="_blank" title="Facebook"><i data-feather="facebook"></i></a></li>
+          <li><a href="http://www.reddit.com/submit?url={{ theurl }}&title={{ object.title }}" target="_blank" title="Reddit"><img class="h-6 w-6" src="../../media/reddit.png" width="24"></a></li>
+        </ul>
+      </div>
+      {% endwith %}
 
     </div>
 
