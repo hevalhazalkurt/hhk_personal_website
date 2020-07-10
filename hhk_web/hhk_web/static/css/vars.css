@@ -11,24 +11,24 @@
     --brand-grey-light: #70858e;
     --brand-grey-dimmed: #97abb3;
     --divider-color: rgba(0, 0, 0, 0.2);
-  
+
     /* Backgrounds */
     --body-background-color: var(--brand-light);
     --box-background-color: rgba(255, 255, 255, 0.2);
-  
+
     /* Text Colors */
     --text-color: var(--brand-grey);
     --text-color-light: var(--brand-grey-light);
     --color-headings: var(--brand-main);
-  
+
     /* Typography */
     --font-size-root: .875rem;
     --font-size-base: 1rem;
     --font-size-large: 1.125rem;
     --font-size-small: .875rem;
     --font-size-mini: .75rem;
-    --font-size-h1: 4rem;;
-    --font-size-h2: 3rem;
+    --font-size-h1: 3rem;
+    --font-size-h2: 2.75rem;
     --font-size-h3: 2.25rem;
     --font-size-h4: 1.875rem;
     --font-size-h5: 1.5rem;
@@ -44,17 +44,17 @@
       'Helvetica', 'Arial', 'sans-serif';
     --font-weight-headings: 400;
     --line-height-headings: 1.1;
-  
+
     /* Components spacing */
     --spacer: 2.5rem;
     --border-radius: 0.25rem;
-  
+
     /* Miscellanious */
     --projectImageMaxWidth: 1440px;
     --easing: cubic-bezier(0.75, 0, 0.08, 1);
     --box-shadow: 0 3px 5px rgba(0, 0, 0, 0.05), 0 5px 16px rgba(0, 0, 0, 0.05);
   }
-  
+
   .dark {
     --text-color: #7e9199;
     --text-color-light: var(--brand-grey);
