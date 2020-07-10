@@ -49,15 +49,17 @@
   {% for post in latest_posts %}
   <div class="post-item">
 
-    <div class="post-item__background" style="background-image: url({{ post.image.url }})">
+    <a href="{{ post.get_absolute_url }}"><div class="post-item__background" style="background-image: url({{ post.image.url }})">
       <div class="post-item__overlay"></div>
       <div class="post-meta">
         <h1 class="post-item__title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
-        <h7 class="post-item__title"><a href="{{ post.category.get_absolute_url }}">{{ post.category }}</a></h7>
-        <p class="post-item__desc">{{ post.summary }}</p>
+        <h7 class="post-item__title"><a href="{{ post.category.get_absolute_url }}">{{ post.category }}</a></h7><br>
+        <!-- <p class="post-item__desc">{{ post.summary }}</p>-->
+        <a href="{{ post.get_absolute_url }}"><p class="post-meta__see-details">Read Article <svg width="50px" height="16px" viewBox="0 0 50 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Arrow</title> <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" data-darkreader-inline-fill="" data-darkreader-inline-stroke="" style="--darkreader-inline-fill:none; --darkreader-inline-stroke:none;"><g transform="translate(0.000000, -5.000000)" fill="currentColor" fill-rule="nonzero" data-darkreader-inline-fill="" style="--darkreader-inline-fill:currentColor;"><g transform="translate(0.000000, 5.000000)"><polygon points="0.3 6.18 47.1 6.18 47.1 8.58 0.3 8.58"></polygon> <polygon points="41.0533689 15.6 39.3 13.9695042 45.9356357 7.8 39.3 1.63049585 41.0533689 0 49.44 7.80002794"></polygon></g></g></g></svg>
+        </p></a>
       </div>
 
-    </div>
+    </div></a>
   </div>
 
   {% endfor %}
@@ -81,16 +83,16 @@
 <div class="post-container">
   {% for project in latest_projects %}
   <div class="post-item">
-      <div class="post-item__background" style="background-image: url({{ project.image.url }})">
+      <a href="{{ project.get_absolute_url }}"><div class="post-item__background" style="background-image: url({{ project.image.url }})">
         <div class="post-item__overlay"></div>
 
     <div class="post-meta">
       <h1 class="post-item__title"><a href="{{ project.get_absolute_url }}">{{ project.title }}</a></h1>
       <h7 class="post-item__title"><a href="{{ project.category.get_absolute_url }}">{{ project.category }}</a></h7> <br>
-      <p class="post-meta__see-details">See Project <svg width="50px" height="16px" viewBox="0 0 50 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Arrow</title> <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" data-darkreader-inline-fill="" data-darkreader-inline-stroke="" style="--darkreader-inline-fill:none; --darkreader-inline-stroke:none;"><g transform="translate(0.000000, -5.000000)" fill="currentColor" fill-rule="nonzero" data-darkreader-inline-fill="" style="--darkreader-inline-fill:currentColor;"><g transform="translate(0.000000, 5.000000)"><polygon points="0.3 6.18 47.1 6.18 47.1 8.58 0.3 8.58"></polygon> <polygon points="41.0533689 15.6 39.3 13.9695042 45.9356357 7.8 39.3 1.63049585 41.0533689 0 49.44 7.80002794"></polygon></g></g></g></svg>
-      </p>
+      <a href="{{ project.get_absolute_url }}"><p class="post-meta__see-details">See Project <svg width="50px" height="16px" viewBox="0 0 50 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Arrow</title> <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" data-darkreader-inline-fill="" data-darkreader-inline-stroke="" style="--darkreader-inline-fill:none; --darkreader-inline-stroke:none;"><g transform="translate(0.000000, -5.000000)" fill="currentColor" fill-rule="nonzero" data-darkreader-inline-fill="" style="--darkreader-inline-fill:currentColor;"><g transform="translate(0.000000, 5.000000)"><polygon points="0.3 6.18 47.1 6.18 47.1 8.58 0.3 8.58"></polygon> <polygon points="41.0533689 15.6 39.3 13.9695042 45.9356357 7.8 39.3 1.63049585 41.0533689 0 49.44 7.80002794"></polygon></g></g></g></svg>
+      </p></a>
     </div>
-  </div>
+  </div></a>
   </div>
   {% endfor %}
 </div>
