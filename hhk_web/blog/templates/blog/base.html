@@ -6,7 +6,7 @@
 
 
   <!-- meta tags for different kind of pages -->
-  {% with home="http://127.0.0.1:8000" %}
+  {% with home="http://hevalhazalkurt.com" %}
 
     {% if object.title %}
       <title>{{ object.title }}</title>
@@ -38,7 +38,6 @@
               <meta property="og:title" content="Heval Hazal Kurt's personal blog and portfolio. She is writing her experiences, knowledges, snippets and other useful informations about programming and filmmaking.">
               <meta property="twitter:title" content="Heval Hazal Kurt's personal blog and portfolio. She is writing her experiences, knowledges, snippets and other useful informations about programming and filmmaking.">
           {% endif %}
-
 
           {% if image.url %}
               <meta property="og:image" content="{{ home }}{{ image.url }}">
@@ -140,6 +139,17 @@
       © Heval Hazal Kurt {% now "Y" %}
     </p>
     <p class="footer-right"></p>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-67913883-4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-67913883-4');
+    </script>
+
 
   </footer>
   <script>
