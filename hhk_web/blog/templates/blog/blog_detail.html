@@ -14,7 +14,7 @@
         {% with theurl=request.build_absolute_uri %}
         <div class="social">
           <ul class="social-links__wrapper">
-            <p class="blog-post__sum">Share on ...</p>
+            <p class="blog-post__sum">Share ...</p>
           <li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{ theurl }}&title={{ object.title }}&summary=mubapp.herokuapp.com&source=MUBapp" target="_blank" title="LinkedIn"><i data-feather="linkedin"></i></a></li>
           <li><a href="http://twitter.com/share?text={{ object.title }} by @hevalandsteven &url={{ theurl }}&hashtags={{ object.category|lower }}" target="_blank" title="Twitter"><i data-feather="twitter"></i></a></li>
           <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ theurl }}" target="_blank" title="Facebook"><i data-feather="facebook"></i></a></li>
@@ -25,25 +25,29 @@
 
     </div>
 
-    <h3 class="related-post-section__title container">Related Posts</h3>
+
+    <!-- Related Posts Section -->
+    <section class="post-section">
+    <h3 class="post-section__title">Related Posts</h3>
 
 
     <div class="related-posts__wrapper">
       {% for rel in related_posts %}
-      <a class="related-post-item" href="{{ rel.get_absolute_url }}">
+      <a href="{{ rel.get_absolute_url }}"><div class="post-item">
 
         <div class="related-post-item__bg" style="background-image: url({{ rel.image.url }})">
           <div class="related-post-item__overlay"></div>
           <div class="related-post-item__meta">
             <h1 class="related-post-item__title">{{ rel.title }}</h1>
-            <p class="related-post-item__desc">{{ rel.summary }}</p>
           </div>
 
-        </div>
-      </a>
-      {% endfor %}
+        </div></a>
+      </div>
 
+      {% endfor %}
     </div>
+    </section>
+
 
 
 
